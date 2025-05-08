@@ -5,10 +5,11 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
   libzip-dev \
   zip \
-  git 
+  git \
+  libpq-dev
 
 # Install php extensions
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_pgsql
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
